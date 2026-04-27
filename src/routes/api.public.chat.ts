@@ -19,7 +19,7 @@ const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const AI_API_KEY = process.env.AI_API_KEY || process.env.OPENAI_API_KEY!;
 
 const GATEWAY_URL = process.env.AI_GATEWAY_URL || "https://api.openai.com/v1/chat/completions";
-const MODEL = "gemini-2.5-flash";
+const MODEL = "llama-3.3-70b-versatile";
 
 function admin() {
   return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
