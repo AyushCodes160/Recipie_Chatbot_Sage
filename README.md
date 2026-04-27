@@ -28,7 +28,7 @@ This project was built to demonstrate proficiency in modern frontend frameworks,
 - **Lucide React** (iconography)
 
 **Backend & AI:**
-- **Google Gemini 2.5 Flash** (via Google AI Studio for fast, intelligent text generation and tool usage)
+- **Groq Llama 3.3 70B** (via Groq for fast, intelligent text generation and tool usage)
 - **Supabase** (PostgreSQL)
 - **pgvector** (for fast, scalable similarity searching across 125k recipes)
 
@@ -37,7 +37,7 @@ This project was built to demonstrate proficiency in modern frontend frameworks,
 ## 🧠 How the RAG Pipeline Works
 
 1. **Vectorization:** Recipes are stored in Supabase with a `tsvector` generated from their title, ingredients, and instructions.
-2. **Intent Planning:** When a user sends a message, Gemini first runs a `plan_recipe_search` tool to determine if a database search is necessary, extracting keywords and constraints (like maximum allowed steps or ingredients).
+2. **Intent Planning:** When a user sends a message, Llama first runs a `plan_recipe_search` tool to determine if a database search is necessary, extracting keywords and constraints (like maximum allowed steps or ingredients).
 3. **Retrieval:** If needed, a custom Supabase RPC function (`search_recipes`) executes a high-speed GIN-indexed search against the database, filtering by constraints and returning the top matches.
 4. **Generation:** The retrieved recipes are injected into the AI's system context, and a conversational response is streamed back to the user.
 
