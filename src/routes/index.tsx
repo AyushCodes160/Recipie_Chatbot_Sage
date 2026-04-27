@@ -228,6 +228,7 @@ function LandingPage() {
               <Link
                 key={cat.name}
                 to="/chat"
+                search={{ q: cat.name }}
                 className="group relative rounded-[1.5rem] overflow-hidden h-52 sm:h-64 shadow-card hover:shadow-lg transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 style={{ animationDelay: `${i * 80}ms` }}
               >

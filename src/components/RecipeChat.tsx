@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Send, Clock, Soup, Loader2, ArrowLeft, Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
+import { Link, useSearch } from "@tanstack/react-router";
 
 export type ChatMessage = {
   role: "user" | "assistant";
@@ -32,12 +32,22 @@ export function RecipeChat() {
   const [isStreaming, setIsStreaming] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const initialQueryRef = useRef(false);
+  const search = useSearch({ strict: false }) as { q?: string };
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isStreaming]);
+
+  // Auto-trigger search if 'q' parameter is present
+  useEffect(() => {
+    if (search.q && !initialQueryRef.current) {
+      initialQueryRef.current = true;
+      send(`Show me some ${search.q} recipes`);
+    }
+  }, [search.q]);
 
   async function send(text: string) {
     if (!text.trim() || isStreaming) return;

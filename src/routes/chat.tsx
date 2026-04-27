@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { RecipeChat } from "@/components/RecipeChat";
 
 export const Route = createFileRoute("/chat")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    q: search.q as string | undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Chat with Sage — AI Recipe Assistant" },
