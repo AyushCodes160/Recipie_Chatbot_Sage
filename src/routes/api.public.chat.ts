@@ -19,7 +19,7 @@ const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const AI_API_KEY = process.env.AI_API_KEY || process.env.OPENAI_API_KEY!;
 
 const GATEWAY_URL = process.env.AI_GATEWAY_URL || "https://api.openai.com/v1/chat/completions";
-const MODEL = "llama-3.3-70b-versatile";
+const MODEL = "llama-3.1-8b-instant";
 
 function admin() {
   return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
@@ -53,7 +53,7 @@ async function planRetrieval(history: ChatMessage[]): Promise<{
             "IMPORTANT: DO NOT include words like 'recipe', 'recipes', 'how to make', or 'I want'. ONLY output the core food/ingredient keywords (e.g. 'chicken', 'pasta', 'chocolate cake'). " +
             "Set max_steps when the user asks for quick / few-step / easy meals. Set max_ingredients when they want simple/minimal recipes.",
         },
-        ...history.slice(-8),
+        ...history.slice(-4),
       ],
       tools: [
         {
@@ -111,7 +111,7 @@ async function searchRecipes(
     query_text: search,
     max_steps,
     max_ingredients,
-    match_limit: 6,
+    match_limit: 3,
   });
   if (error) {
     console.error("search_recipes error", error);
@@ -124,13 +124,13 @@ function buildContext(recipes: RecipeRow[]): string {
   if (!recipes.length) return "No matching recipes were found in the database.";
   return recipes
     .map((r, i) => {
-      const ings = r.ingredients.slice(0, 20).map((x) => `  - ${x}`).join("\n");
-      return `### Recipe ${i + 1} — ${r.title} [id:${r.id}]
+      const ings = r.ingredients.slice(0, 8).map((x) => `  - ${x}`).join("\n");
+      return `### Recipe ${i + 1} — ${r.title}
 Steps: ${r.num_steps} | Ingredients: ${r.num_ingredients}
 Ingredients:
 ${ings}
 Instructions:
-${r.instructions.slice(0, 1200)}`;
+${r.instructions.slice(0, 400)}`;
     })
     .join("\n\n---\n\n");
 }
