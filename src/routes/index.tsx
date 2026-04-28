@@ -339,7 +339,7 @@ function LandingPage() {
             </div>
 
             <p className="text-sm text-[#8B6B50]">
-              Built with ❤️ using React, Llama 3.3 AI & Supabase · 125,000+ recipes
+              Built using React, Llama 3.1 AI & Supabase · 125,000+ recipes
             </p>
 
             <Link

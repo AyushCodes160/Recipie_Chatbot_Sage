@@ -170,7 +170,7 @@ export function RecipeChat() {
         </div>
         <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#8B6B50] bg-[#D94F30]/10 px-3 py-1.5 rounded-full border border-[#D94F30]/20">
           <Flame className="w-3.5 h-3.5 text-[#D94F30]" />
-          <span className="font-semibold text-[#D94F30]">RAG · Llama 3.3</span>
+          <span className="font-semibold text-[#D94F30]">RAG · Llama 3.1</span>
         </div>
       </header>
 

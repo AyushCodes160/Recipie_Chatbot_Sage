@@ -28,7 +28,7 @@ This project was built to demonstrate proficiency in modern frontend frameworks,
 - **Lucide React** (iconography)
 
 **Backend & AI:**
-- **Groq Llama 3.3 70B** (via Groq for fast, intelligent text generation and tool usage)
+- **Llama 3.1 8B** (via Groq for fast, intelligent text generation and tool usage)
 - **Supabase** (PostgreSQL)
 - **pgvector** (for fast, scalable similarity searching across 125k recipes)
 
@@ -73,8 +73,8 @@ This project was built to demonstrate proficiency in modern frontend frameworks,
    VITE_SUPABASE_URL="your_supabase_url"
    VITE_SUPABASE_PUBLISHABLE_KEY="your_anon_key"
    
-   AI_API_KEY="your_google_ai_key"
-   AI_GATEWAY_URL="https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+   AI_API_KEY="your_groq_api_key"
+   AI_GATEWAY_URL="https://api.groq.com/openai/v1/chat/completions"
    ```
 
 4. **Seed the Database (Optional):**
