@@ -21,7 +21,6 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-/* ── food image URLs (Unsplash) ── */
 const HERO_BURGER = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80";
 const PIZZA_IMG = "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80";
 const CHICKEN_IMG = "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&q=80";
@@ -62,14 +61,12 @@ const FEATURES = [
 function LandingPage() {
   return (
     <div className="relative overflow-hidden">
-      {/* ═══ Decorative Background Elements ═══ */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#D94F30]/8 blur-3xl" />
         <div className="absolute top-1/3 -left-32 w-64 h-64 rounded-full bg-[#F2A93B]/10 blur-3xl" />
         <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-[#D94F30]/5 blur-2xl" />
       </div>
 
-      {/* ═══ NAVBAR ═══ */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#FDF0E0]/80 border-b border-[#E8CCAB]/60">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -98,12 +95,9 @@ function LandingPage() {
         </div>
       </nav>
 
-      {/* ═══ HERO SECTION ═══ */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-16 md:pt-20 md:pb-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Text */}
           <div className="relative">
-            {/* Decorative dots */}
             <div className="absolute -top-8 -left-6 w-16 h-16 dot-pattern opacity-30 rounded-full" />
 
             <div className="inline-flex items-center gap-2 bg-[#D94F30]/10 border border-[#D94F30]/20 rounded-full px-4 py-1.5 mb-6">
@@ -148,7 +142,6 @@ function LandingPage() {
               </a>
             </div>
 
-            {/* Stats */}
             <div className="flex gap-8 mt-10">
               {[
                 { value: "125K+", label: "Recipes" },
@@ -163,9 +156,7 @@ function LandingPage() {
             </div>
           </div>
 
-          {/* Right: Hero food image collage */}
           <div className="relative h-[420px] sm:h-[500px] lg:h-[560px]">
-            {/* Main burger image */}
             <div className="absolute top-4 right-0 w-[75%] h-[75%] rounded-[2rem] overflow-hidden shadow-card border-4 border-white/80 animate-float z-20">
               <img src={HERO_BURGER} alt="Delicious burger" className="w-full h-full object-cover" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5">
@@ -173,7 +164,6 @@ function LandingPage() {
               </div>
             </div>
 
-            {/* Secondary: pizza */}
             <div className="absolute bottom-0 left-0 w-[50%] h-[45%] rounded-2xl overflow-hidden shadow-card border-4 border-white/80 animate-float-reverse z-30">
               <img src={PIZZA_IMG} alt="Fresh pizza" className="w-full h-full object-cover" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
@@ -181,7 +171,6 @@ function LandingPage() {
               </div>
             </div>
 
-            {/* Floating tag */}
             <div className="absolute top-0 left-8 z-40 bg-white rounded-2xl shadow-card px-4 py-3 flex items-center gap-2 animate-wiggle">
               <span className="text-2xl">🔥</span>
               <div>
@@ -190,7 +179,6 @@ function LandingPage() {
               </div>
             </div>
 
-            {/* Floating rating badge */}
             <div className="absolute bottom-16 right-4 z-40 bg-[#D94F30] text-white rounded-2xl shadow-warm px-4 py-3 animate-pulse-glow">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
@@ -200,17 +188,14 @@ function LandingPage() {
               <p className="text-xs font-bold mt-1">AI Powered</p>
             </div>
 
-            {/* Decorative circles */}
             <div className="absolute -bottom-4 right-1/3 w-20 h-20 rounded-full bg-[#F2A93B]/20 blur-sm" />
             <div className="absolute top-1/4 -left-4 w-12 h-12 rounded-full bg-[#D94F30]/15 blur-sm" />
           </div>
         </div>
       </section>
 
-      {/* ═══ WAVY DIVIDER ═══ */}
       <div className="wavy-divider opacity-60" />
 
-      {/* ═══ CATEGORIES SECTION ═══ */}
       <section id="categories" className="relative z-10 py-16 md:py-24 bg-gradient-to-b from-transparent to-[#F5DFC5]/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -256,10 +241,8 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ═══ WAVY DIVIDER ═══ */}
       <div className="wavy-divider opacity-60" />
 
-      {/* ═══ FEATURES SECTION ═══ */}
       <section id="features" className="relative z-10 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
@@ -275,7 +258,6 @@ function LandingPage() {
                 key={f.title}
                 className="group relative bg-white/80 backdrop-blur border-2 border-[#E8CCAB] rounded-[1.5rem] p-8 hover:border-[#D94F30]/40 hover:shadow-card transition-all duration-300"
               >
-                {/* Step number */}
                 <div className="absolute -top-4 -right-2 font-display text-6xl text-[#D94F30]/10 leading-none">
                   #{i + 1}
                 </div>
@@ -292,11 +274,9 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ═══ CTA BANNER ═══ */}
       <section className="relative z-10 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative rounded-[2rem] overflow-hidden bg-gradient-hero p-10 md:p-16 shadow-warm">
-            {/* Decorative elements */}
             <div className="absolute top-4 right-8 text-5xl opacity-30 animate-float">🍕</div>
             <div className="absolute bottom-4 left-8 text-5xl opacity-30 animate-float-reverse">🍔</div>
             <div className="absolute top-1/2 right-1/4 text-4xl opacity-20 animate-wiggle">🌮</div>
@@ -324,7 +304,6 @@ function LandingPage() {
 
 
 
-      {/* ═══ FOOTER ═══ */}
       <footer className="relative z-10 border-t-2 border-[#E8CCAB] bg-[#F5DFC5]/50">
         <div className="max-w-7xl mx-auto px-6 py-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">

@@ -27,7 +27,6 @@ function admin() {
   });
 }
 
-/** Step 1: ask the LLM to extract a search query + numeric filters from the conversation */
 async function planRetrieval(history: ChatMessage[]): Promise<{
   search: string;
   max_steps: number | null;
@@ -181,7 +180,6 @@ async function streamAnswer(
     });
   }
 
-  // Wrap the upstream stream and prepend a metadata SSE event with the cited recipes.
   const meta =
     "data: " +
     JSON.stringify({
@@ -238,7 +236,6 @@ export const Route = createFileRoute("/api/public/chat")({
               headers: { "Content-Type": "application/json" },
             });
           }
-          // Cap history length to control prompt size
           const trimmed = history.slice(-12);
 
           const plan = await planRetrieval(trimmed);
@@ -246,7 +243,6 @@ export const Route = createFileRoute("/api/public/chat")({
             ? await searchRecipes(plan.search, plan.max_steps, plan.max_ingredients)
             : [];
 
-          // Persist the user message asynchronously (non-blocking for streaming)
           if (conversationId) {
             const sb = admin();
             const lastUser = trimmed[trimmed.length - 1];

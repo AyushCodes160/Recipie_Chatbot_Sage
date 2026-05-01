@@ -41,7 +41,6 @@ export function RecipeChat() {
     }
   }, [messages, isStreaming]);
 
-  // Auto-trigger search if 'q' parameter is present
   useEffect(() => {
     if (search.q && !initialQueryRef.current) {
       initialQueryRef.current = true;
@@ -147,7 +146,6 @@ export function RecipeChat() {
 
   return (
     <div className="flex flex-col h-[100dvh] max-w-4xl mx-auto relative">
-      {/* Header */}
       <header className="flex items-center justify-between px-5 py-4 border-b-2 border-[#E8CCAB] bg-[#FDF0E0]/80 backdrop-blur-xl sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <Link
@@ -174,7 +172,6 @@ export function RecipeChat() {
         </div>
       </header>
 
-      {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 sm:px-6 py-6">
         {messages.length === 0 ? (
           <Welcome onPick={(t) => send(t)} />
@@ -194,7 +191,6 @@ export function RecipeChat() {
         )}
       </div>
 
-      {/* Composer */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -241,7 +237,6 @@ export function RecipeChat() {
 function Welcome({ onPick }: { onPick: (t: string) => void }) {
   return (
     <div className="h-full flex flex-col items-center justify-center text-center max-w-xl mx-auto py-12">
-      {/* Decorative food emojis */}
       <div className="relative mb-6">
         <div className="w-20 h-20 rounded-[1.5rem] bg-gradient-hero shadow-warm flex items-center justify-center animate-pulse-glow">
           <span className="text-4xl">🍳</span>
